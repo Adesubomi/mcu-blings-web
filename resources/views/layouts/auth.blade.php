@@ -6,12 +6,12 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ config('app.name') }}</title>
-    <link rel="stylesheet" href="{{ asset('dist/') }}" />
+    <link rel="stylesheet" href="{{ asset('dist/css/main.css') }}" />
 </head>
 <body>
 <div class="container vh-100">
-    <div class="row h-100">
-        <div class="col-6">
+    <div class="row h-100 align-items-center">
+        <div class="col-6 text-right">
             <div id="simpleLogo"></div>
         </div>
         <div class="col-6">

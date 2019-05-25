@@ -8,5 +8,23 @@
 @import '~bootstrap/scss/bootstrap';
 
 #simpleLogo {
-  background: url("../images/The_McPherson_University_logo.png");
+  background: url("../images/The_McPherson_University_logo.png") no-repeat right top;
+  background-size: contain;
+  width: 200px;
+  height: 200px;
+  margin: 0 0 auto auto;
+}
+
+.auth-card {
+  box-shadow: 2px 2px 6px rgba(150,150,150,0.4);
+  background-color: #fff;
+
+  h4 {
+    text-align: center;
+    padding: 2rem 2rem 0 2rem;
+  }
+
+  .card-body {
+    padding: 2rem;
+  }
 }
