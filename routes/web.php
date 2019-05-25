@@ -11,6 +11,12 @@
 |
 */
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', function () {
-    return view('welcome');
+
+    if (auth()->check()) return redirect()->route('home');
+
+    return redirect()->route('login');
 });
