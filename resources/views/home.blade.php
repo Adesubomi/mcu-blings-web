@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div>
+    <div class="border-bottom">
         <div class="row align-items-baseline">
             <div class="col">
                 <h2 class="m-0 p-0">
@@ -28,13 +28,22 @@
                 </button>
             </div>
         </div>
+    </div>
 
-        <div class="table-responsive">
-            <table>
-                <tr>
-                    <td></td>
-                </tr>
-            </table>
-        </div>
+    <div class="table-responsive">
+        <table class="table table-sm table-striped">
+            <thead>
+            <tr>
+                <th>Matric No.</th>
+                <th>Name</th>
+                <th>Level</th>
+            </tr>
+            </thead>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
     </div>
 @endsection
