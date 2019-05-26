@@ -1,11 +1,17 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
 
 // Variables
 @import 'variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+@import "../lib/ionicons-2.0.1/scss/ionicons";
+
+body {
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 300;
+}
 
 #simpleLogo {
   background: url("../images/The_McPherson_University_logo.png") no-repeat right top;
@@ -26,5 +32,37 @@
 
   .card-body {
     padding: 2rem;
+  }
+}
+
+
+.stack-menu {
+  height: 80vh;
+  overflow: auto;
+}
+
+.module-menu-items {
+  display: grid;
+  justify-content: end;
+  grid-template-rows: 80px;
+  grid-template-columns: 80px;
+  grid-gap: 12px;
+
+  .module-menu {
+    border-radius: 6px;
+    background-color: #f0f8ff;
+    padding: 6px;
+    color: #1b4b72;
+    text-align: center;
+    border: 1px solid #1b4b72;
+
+    .module-menu-icon{
+      display: inline-block;
+      font-size: 2em;
+    }
+
+    .module-menu-name{
+    }
+
   }
 }

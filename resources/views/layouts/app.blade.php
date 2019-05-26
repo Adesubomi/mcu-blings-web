@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container p-2">
         <a class="navbar-brand" href="#">{{ config('app.name') }}</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -26,8 +26,8 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         {{--<a class="dropdown-item" href="#">Action</a>--}}
-                        {{--<a class="dropdown-item" href="#">Another action</a>--}}
-                        {{--<div class="dropdown-divider"></div>--}}
+                        <a class="dropdown-item" href="#">Settings</a>
+                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item" onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
@@ -42,7 +42,29 @@
         </div>
     </div>
 </nav>
+<div class="container">
+    <div class="row">
+        <div class="col-auto">
+            <div class="stack-menu">
+                <div class="module-menu-items">
+                    <a href="#" class="module-menu">
+                        <div class="module-menu-icon">
+                            <i class="ion ion-ios-people"></i>
+                        </div>
+                        <div class="module-menu-name">Students</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            @yield('content')
+        </div>
+    </div>
+</div>
 
+<div class="container">
+
+</div>
 
 <script src="{{ asset('dist/js/main.js') }}"></script>
 </body>
