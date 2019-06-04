@@ -13,8 +13,10 @@
 
 Route::middleware('auth:api')->group( function () {
 
-    Route::prefix('users')->group( function () {
-//        Route::post('students/store', );
+    Route::prefix('students')->group( function () {
+        Route::get('', 'StudentController@index')->name('students.index');
+        Route::get('show/{student_id}', 'StudentController@show')->name('students.show');
+        Route::post('store', 'StudentController@store')->name('students.store');
     });
 
 });

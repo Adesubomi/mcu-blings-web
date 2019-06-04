@@ -14,4 +14,4 @@ const tailwindcss = require("tailwindcss");
 
 mix.js('resources/js/main.js', 'public/dist/js')
     .sass('resources/sass/main.scss', 'public/dist/css')
-    .js('resources/js/students_create.js', 'public/dist/js');
+    .js('resources/js/students.js', 'public/dist/js');

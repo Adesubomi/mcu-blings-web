@@ -72,4 +72,14 @@ class User extends Authenticatable
 
         return $student;
     }
+
+    public function scopeStudents($query)
+    {
+        return $query->where('role', config('app.roles.STUDENT.Key'));
+    }
+
+    public function getStudents()
+    {
+        return $this->students()->get();
+    }
 }

@@ -1,5 +1,21 @@
 <template>
     <div>
+        <div class="border-bottom">
+            <div class="row align-items-baseline">
+                <div class="col-auto">
+                    <a href="/students/create" class="btn btn-outline-secondary">
+                        <i class="ion-chevron-left"></i>
+                    </a>
+                </div>
+                <div class="col">
+                    <h2 class="m-0 p-0">
+                        New Students
+                    </h2>
+                    <h5 class="text-muted">Create a new student record for McPherson</h5>
+                </div>
+            </div>
+        </div>
+
         <div v-if="stage == 0">
             <div class="row pt-5">
                 <div class="col">
@@ -196,7 +212,6 @@
                 </div>
             </div>
         </div>
-
         <div class="border-top pt-4 mt-4 text-right">
             <button type="submit" class="btn btn-success btn-lg" @click.prevent="changeStage">
                 <span v-if="stage==0">Next</span>

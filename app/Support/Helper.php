@@ -15,8 +15,7 @@ function apiSuccess(string $msg, $data = [], array $meta = [])
 
     $nativeMeta = [];
 
-    $responder = config('app.apiResponse');
-    $responder['status'] = true;
+    $responder = [];
     $responder['message'] = $msg;
     $responder['payload'] = $payload;
 
@@ -31,16 +30,18 @@ function apiSuccess(string $msg, $data = [], array $meta = [])
 
 /**
  * A blueprint of a failed ajax request
+ * @param Exception $e
  * @param string $msg
  * @param array $payload
  * @param int $status
  * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
  */
-function apiFailure(string $msg, $payload = [], $status=500)
+function apiFailure(\Exception $e, string $msg = null, $payload = [], $status = 500)
 {
-    $responder = config('app.apiResponse');
-    $responder['status'] = false;
-    $responder['message'] = $msg;
+    logAnException($e);
+
+    $responder = [];
+    $responder['message'] = $msg ?? 'Unable to load resource';
     $responder['payload'] = $payload;
 
     return response($responder, $status);
@@ -48,7 +49,7 @@ function apiFailure(string $msg, $payload = [], $status=500)
 
 function unauthorized()
 {
-    return apiFailure('Unauthorized access', []);
+    return apiFailure(null, 'Unauthorized access', []);
 }
 
 /**
@@ -59,8 +60,7 @@ function simpleLog(String $message)
 {
     try {
         \Illuminate\Support\Facades\Log::info($message);
-    }
-    catch (\Exception $exception) {
+    } catch (\Exception $exception) {
 
     }
 }
@@ -72,7 +72,8 @@ function simpleLog(String $message)
 function logAnException(\Exception $exception)
 {
 
-    $exceptionFormat = "\n". config('app.name') ."-EXCEPTION \nMESSAGE:: %s \nFILE:: %s \nLINE::%s \n\n";
+    if (empty($exception)) return;
+    $exceptionFormat = "\n" . config('app.name') . "-EXCEPTION \nMESSAGE:: %s \nFILE:: %s \nLINE::%s \n\n";
 
     \Illuminate\Support\Facades\Log::info(sprintf($exceptionFormat,
         !empty(trim($exception->getMessage())) ? $exception->getMessage() : get_class($exception),
@@ -99,8 +100,7 @@ function apiPaginationFactory($data)
                 $payload = $data;
                 break;
         }
-    }
-    else {
+    } else {
         $payload = $data;
     }
 

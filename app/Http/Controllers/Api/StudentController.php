@@ -19,7 +19,26 @@ class StudentController extends Controller
         }
         catch (\Exception $exception) {
 
-            return apiFailure($exception);
+            return apiFailure($exception, 'Unable to add student, please try again.');
+        }
+    }
+
+    public function show()
+    {
+
+    }
+
+    public function index()
+    {
+        try {
+
+            $students = (new User)->getStudents();
+
+            return apiSuccess('Students', $students);
+        }
+        catch (\Exception $exception) {
+
+            return apiFailure($exception, 'Unable to load students, please try again');
         }
     }
 }
