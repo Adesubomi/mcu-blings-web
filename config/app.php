@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'McPherson Blings'),
 
     /*
     |--------------------------------------------------------------------------
@@ -228,4 +228,13 @@ return [
 
     ],
 
+    // APP SPECIFIC CONFIGURATIONS
+    'roles' => [
+        'ADMIN' => [
+            'key' => 'ADMIN'
+        ],
+        'STUDENT' => [
+            'key' => 'STUDENT'
+        ],
+    ]
 ];
