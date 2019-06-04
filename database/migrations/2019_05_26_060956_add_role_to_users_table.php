@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddRolesToUsersTable extends Migration
+class AddRoleToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class AddRolesToUsersTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasColumn('users', 'roles')) {
+        if (!Schema::hasColumn('users', 'role')) {
             Schema::table('users', function (Blueprint $table) {
-                $table->string('roles')->nullable();
+                $table->string('role')->nullable();
             });
         }
     }
@@ -29,7 +29,7 @@ class AddRolesToUsersTable extends Migration
     {
         if (Schema::hasColumn('users', 'levels')) {
             Schema::table('users', function (Blueprint $table) {
-                $table->dropColumn('roles');
+                $table->dropColumn('role');
             });
         }
     }

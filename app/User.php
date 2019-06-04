@@ -5,10 +5,11 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
@@ -17,6 +18,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'firstname', 'lastname', 'email', 'password',
+        'role', 'level', 'matric_number',
     ];
 
     /**
@@ -40,5 +42,34 @@ class User extends Authenticatable
     public function getFullnameAttribute()
     {
         return "{$this->firstname} {$this->lastname}";
+    }
+
+    public function createStudent($request)
+    {
+        $student = $this->create([
+            'firstname' => $request->input('firstname'),
+            'lastname' => $request->input('lastname'),
+            'email' => $request->input('email'),
+            'password' => $request->input('password'),
+            'role' => $request->input('role'),
+            'level' => $request->input('level'),
+            'matric_number' => $request->input('matric_number'),
+        ]);
+
+        $biometric = Biometric::create([
+            'user_id' => $student->id,
+            'left_thumb' => '',
+            'left_index' => '',
+            'left_middle' => '',
+            'left_ring' => '',
+            'left_pinky' => '',
+            'right_thumb' => '',
+            'right_index' => '',
+            'right_middle' => '',
+            'right_ring' => '',
+            'right_pinky' => '',
+        ]);
+
+        return $student;
     }
 }

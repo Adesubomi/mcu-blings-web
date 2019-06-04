@@ -1,9 +1,7 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
-
 // Variables
 @import 'variables';
-
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 @import "../lib/ionicons-2.0.1/scss/ionicons";
@@ -11,6 +9,24 @@
 body {
   font-family: 'Ubuntu', sans-serif;
   font-weight: 300;
+}
+
+.text-gray-100 { color: #ddd;}
+.text-gray-200 { color: #c0c0c0;}
+.text-gray-300 { color: #a0a0a0;}
+.text-gray-400 { color: #999;}
+.text-gray-500 { color: #666;}
+.text-gray-600 { color: #333;}
+.text-1x { font-size: 1em;}
+.text-2x { font-size: 1.4em;}
+.text-3x { font-size: 1.8em;}
+.text-4x { font-size: 2.2em;}
+.text-5x { font-size: 2.6em;}
+.text-6x { font-size: 3.0em;}
+.text-7x { font-size: 3.4em;}
+
+.flip-x {
+  transform: scaleX(-1);
 }
 
 #simpleLogo {
@@ -22,7 +38,7 @@ body {
 }
 
 .auth-card {
-  box-shadow: 2px 2px 6px rgba(150,150,150,0.4);
+  box-shadow: 2px 2px 6px rgba(150, 150, 150, 0.4);
   background-color: #fff;
 
   h4 {
@@ -34,7 +50,6 @@ body {
     padding: 2rem;
   }
 }
-
 
 .stack-menu {
   height: 80vh;
@@ -56,13 +71,42 @@ body {
     text-align: center;
     border: 1px solid #1b4b72;
 
-    .module-menu-icon{
+    .module-menu-icon {
       display: inline-block;
       font-size: 2em;
     }
 
-    .module-menu-name{
+    .module-menu-name {
     }
 
+  }
+}
+
+.hand-display {
+  text-align: center;
+  color: #c0dfff;
+  font-size: 14rem;
+  line-height: 0;
+}
+
+.fingerprint-display {
+  width: 70px;
+
+  .indicator {
+    width: 64px;
+    height: 64px;
+    background: rgba(200, 200, 200, 0.5);
+    border-radius: 6px;
+    margin: 0 auto;
+  }
+
+  .label {
+    font-size: 11px;
+    color: #808080;
+    text-align: center;
+  }
+
+  &.disabled .indicator {
+    background: rgba(200, 200, 200, 0.2);
   }
 }

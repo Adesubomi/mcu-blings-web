@@ -22,10 +22,10 @@
                 </div>
             </div>
             <div class="col-auto">
-                <button class="btn btn-sm btn-outline-primary">
+                <a class="btn btn-sm btn-outline-primary" href="{{ route('students.create') }}">
                     <i class="ion-ios-personadd"></i>
                     New Student
-                </button>
+                </a>
             </div>
         </div>
     </div>

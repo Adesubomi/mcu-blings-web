@@ -13,11 +13,5 @@ const tailwindcss = require("tailwindcss");
  */
 
 mix.js('resources/js/main.js', 'public/dist/js')
-    .sass('resources/sass/main.scss', 'public/dist/css');
-
-// mix.sass('resources/assets/scss/tailwind.scss', 'public/dist/css')
-//     .options({
-//         postCss: [
-//             tailwindcss('./tailwind.config.js'),
-//         ]
-//     });
+    .sass('resources/sass/main.scss', 'public/dist/css')
+    .js('resources/js/students_create.js', 'public/dist/js');

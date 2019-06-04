@@ -15,10 +15,14 @@ Auth::routes([
     'register' => false,
 ]);
 
-Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', function () {
-
-    if (auth()->check()) return redirect()->route('home');
-
+    if (auth()->check()) return redirect()->intended(route('home'));
     return redirect()->route('login');
+});
+
+Route::middleware(['auth'])->group( function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/students', 'StudentController@index')->name('students.index');
+    Route::get('/students/create', 'StudentController@create')->name('students.create');
+    Route::post('/students/store', 'StudentController@store')->name('students.store');
 });

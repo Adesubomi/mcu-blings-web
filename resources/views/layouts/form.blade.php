@@ -5,6 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name') }}</title>
     <link rel="stylesheet" href="{{ asset('dist/css/main.css') }}"/>
     @yield('styles')
@@ -44,26 +45,9 @@
     </div>
 </nav>
 
-<div id="mcApp">
-    <div class="container">
-        <div class="row">
-            <div class="col-auto">
-                <div class="stack-menu">
-                    <div class="module-menu-items">
-                        <a href="#" class="module-menu">
-                            <div class="module-menu-icon">
-                                <i class="ion ion-ios-people"></i>
-                            </div>
-                            <div class="module-menu-name">Students</div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col" i>
-                @yield('content')
-            </div>
-        </div>
-    </div>
+
+<div class="container" id="mcApp">
+    @yield('content')
 </div>
 
 <div class="container">
@@ -72,5 +56,6 @@
 
 <script src="{{ asset('dist/js/main.js') }}"></script>
 @yield('scripts')
+
 </body>
 </html>
