@@ -1,28 +1,46 @@
 <template>
-    <div>
-        <div class="three col">
-            <div class="loader" id="loader-1"></div>
-        </div>
+    <div :class="allClasses">
+        <div class="loader" id="loader-1"></div>
     </div>
 </template>
+
+<script>
+    export default {
+        components: {},
+        props: ['cssClass'],
+        data(){
+            return {}
+        },
+        computed: {
+            allClasses () {
+                if ( this.cssClass ) return this.cssClass;
+                // else return 'text-center';
+            }
+        },
+        methods: {}
+    }
+</script>
+
 <style scoped="">
 
     .loader {
-        width: 40px;
-        height: 40px;
+        width: 14px;
+        height: 14px;
         border-radius: 100%;
         position: relative;
-        margin: 20px auto;
+        margin: 0 auto;
+        padding: 0;
     }
 
 
     /* LOADER 1 */
+
     #loader-1:before,
     #loader-1:after {
         content: "";
         position: absolute;
-        /*top: -10px;
-        left: -10px;*/
+        /*top: -10px;*/
+        left: 0;
         width: 100%;
         height: 100%;
         border-radius: 100%;
@@ -32,11 +50,11 @@
 
     #loader-1:before {
         z-index: 100;
-        animation: spin 0.4s infinite linear;
+        animation: spin .4s infinite linear;
     }
 
     #loader-1:after {
-        border: 1px solid #ccc;
+        border: 1px solid #99a;
     }
 
     @keyframes spin {

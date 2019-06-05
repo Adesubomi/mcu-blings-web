@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
@@ -46,31 +48,46 @@ class User extends Authenticatable
 
     public function createStudent($request)
     {
-        $student = $this->create([
-            'firstname' => $request->input('firstname'),
-            'lastname' => $request->input('lastname'),
-            'email' => $request->input('email'),
-            'password' => $request->input('password'),
-            'role' => $request->input('role'),
-            'level' => $request->input('level'),
-            'matric_number' => $request->input('matric_number'),
-        ]);
+        $student = null;
 
-        $biometric = Biometric::create([
-            'user_id' => $student->id,
-            'left_thumb' => '',
-            'left_index' => '',
-            'left_middle' => '',
-            'left_ring' => '',
-            'left_pinky' => '',
-            'right_thumb' => '',
-            'right_index' => '',
-            'right_middle' => '',
-            'right_ring' => '',
-            'right_pinky' => '',
-        ]);
+        DB::transaction( function ($query) use (&$student, $request) {
+            $student = $this->create([
+                'firstname' => $request->input('firstname'),
+                'lastname' => $request->input('lastname'),
+                'email' => $request->input('email'),
+                'role' => $request->input('role'),
+                'level' => $request->input('level') ?? 1,
+                'matric_number' => $request->input('matric_number'),
+                'password' => bcrypt( Str::random(6) ),
+            ]);
+
+            $biometric = Biometric::create([
+                'user_id' => $student->id,
+                'left_thumb' => '',
+                'left_index' => '',
+                'left_middle' => '',
+                'left_ring' => '',
+                'left_pinky' => '',
+                'right_thumb' => '',
+                'right_index' => '',
+                'right_middle' => '',
+                'right_ring' => '',
+                'right_pinky' => '',
+            ]);
+        });
 
         return $student;
+    }
+
+    public function getLastMatricNumber()
+    {
+        $latestStudent = $this->students()->latest()->first();
+
+        if (!empty($latestStudent)) {
+            return $latestStudent->matric_number;
+        }
+
+        return '';
     }
 
     public function scopeStudents($query)

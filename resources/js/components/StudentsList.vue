@@ -53,8 +53,8 @@
                     </thead>
                     <tr v-for="student of students">
                         <td><span v-text="student.matric_number"></span></td>
-                        <td><span v-text="student.full_name"></span></td>
-                        <td><span v-text="student.level"></span></td>
+                        <td><span v-text="student.lastname +' '+ student.firstname"></span></td>
+                        <td><span v-text="student_level(student) + '00 Level'"></span></td>
                     </tr>
                 </table>
             </div>
@@ -85,9 +85,17 @@
                         this.students = response.data.payload;
                     })
                     .catch(error => {
-                        this.students = null
+                        this.students = null;
                         this.loading = false;
                     });
+            },
+
+            student_level: function (student) {
+
+                if (student.level == null || student.level == undefined) {
+                    return '1';
+                }
+                return student.level;
             }
         }
     }

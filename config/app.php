@@ -236,5 +236,25 @@ return [
         'STUDENT' => [
             'key' => 'STUDENT'
         ],
+    ],
+
+    'colleges' => [
+        ['short_name' => 'colhum', 'name' => 'College of humanities',
+            'departments' => [
+                ['name' => 'Law'],
+                ['name' => 'Library Information'],
+            ]
+        ],
+        ['short_name' => 'colnas', 'name' => 'College of natural and applied sciences',
+            'departments' => [
+                ['name' => 'Computer Science', 'short_name' => ''],
+                ['name' => 'Physics', 'short_name' => ''],
+            ]
+        ],
+        ['short_name' => 'colmas', 'name' => 'College of social and management sciences',
+            'departments' => [
+                ['name' => 'Mass Communication'],
+            ]
+        ],
     ]
 ];

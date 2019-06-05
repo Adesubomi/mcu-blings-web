@@ -19,4 +19,8 @@ Route::middleware('auth:api')->group( function () {
         Route::post('store', 'StudentController@store')->name('students.store');
     });
 
+    Route::prefix('pd')->name('pd.')->group( function () {
+        Route::get('colleges-alt', 'PublicDomainController@collegesPlus')->name('colleges-alt');
+    });
+
 });

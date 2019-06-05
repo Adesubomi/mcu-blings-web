@@ -8,6 +8,7 @@ Vue.mixin({
                 {method: 'get', url: 'students', name: 'students', description: 'Get list of students'},
                 {method: 'post', url: 'students/store', name: 'students.store', description: 'Get list of students'},
                 {method: 'get', url: 'students/show/:student_id', name: 'students.show', description: 'Get a student'},
+                {method: 'get', url: 'pd/colleges-alt', name: 'pd.colleges-alt', description: 'Get list of colleges with their departments'},
             ]
         }
     },
@@ -47,7 +48,7 @@ Vue.mixin({
 
             let paramKeys = Object.keys(params);
 
-            for (paramKey of paramKeys) {
+            for (let paramKey of paramKeys) {
                 fUrl = fUrl.replace(':' + paramKey, params[paramKey]);
             }
 

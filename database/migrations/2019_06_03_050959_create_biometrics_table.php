@@ -16,16 +16,16 @@ class CreateBiometricsTable extends Migration
         Schema::create('biometrics', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('user_id');
-            $table->binary('left_thumb');
-            $table->binary('left_index');
-            $table->binary('left_middle');
-            $table->binary('left_ring');
-            $table->binary('left_pinky');
-            $table->binary('right_thumb');
-            $table->binary('right_index');
-            $table->binary('right_middle');
-            $table->binary('right_ring');
-            $table->binary('right_pinky');
+            $table->binary('left_thumb')->nullable();
+            $table->binary('left_index')->nullable();
+            $table->binary('left_middle')->nullable();
+            $table->binary('left_ring')->nullable();
+            $table->binary('left_pinky')->nullable();
+            $table->binary('right_thumb')->nullable();
+            $table->binary('right_index')->nullable();
+            $table->binary('right_middle')->nullable();
+            $table->binary('right_ring')->nullable();
+            $table->binary('right_pinky')->nullable();
             $table->timestamps();
         });
     }

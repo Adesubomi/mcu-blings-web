@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Requests\StudentStoreRequest;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class StudentController extends Controller
 {
-    public function store(Request $request)
+    public function store(StudentStoreRequest $request)
     {
         try {
 
