@@ -12,7 +12,7 @@
 */
 
 Auth::routes([
-    'register' => false,
+    'register' => true,
 ]);
 
 Route::get('/', function () {
@@ -24,5 +24,5 @@ Route::middleware(['auth'])->group( function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/students', 'StudentController@index')->name('students.index');
     Route::get('/students/create', 'StudentController@create')->name('students.create');
-    Route::post('/students/store', 'StudentController@store')->name('students.store');
+    Route::get('/students/{student_id}', 'StudentController@show')->name('students.show');
 });

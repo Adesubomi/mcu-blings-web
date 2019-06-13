@@ -10,6 +10,9 @@
 </head>
 <body>
 
+<noscript>
+    <strong>We're sorry but mcu-blings-spa doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+</noscript>
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container p-2">
         <a class="navbar-brand" href="#">{{ config('app.name') }}</a>
@@ -20,11 +23,16 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
+                {{--<li class="nav-item active mr-4">
                     <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-                </li>
+                </li>--}}
+                @if (Route::has('register'))
                 <li class="nav-item px-3">
-                    <a class="nav-link btn btn-outline-secondary px-4" href="{{ route('login') }}">Login</a>
+                    <a class="btn btn-outline-secondary px-4" href="{{ route('login') }}">Register</a>
+                </li>
+                @endif
+                <li class="nav-item px-3">
+                    <a class="btn btn-primary px-4" href="{{ route('login') }}">Login</a>
                 </li>
             </ul>
         </div>
@@ -43,3 +51,25 @@
 </div>
 </body>
 </html>
+
+{{--
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title>mcu-blings-spa</title>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but mcu-blings-spa doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
+
+--}}

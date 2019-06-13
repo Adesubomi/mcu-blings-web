@@ -24,9 +24,18 @@ class StudentController extends Controller
         }
     }
 
-    public function show()
+    public function show(Request $request, User $user)
     {
+        $studentId = $request->route('student_id');
 
+        try {
+
+            return apiSuccess('Student information', $user->getStudentInfo($studentId));
+        }
+        catch (\Exception $exception) {
+
+            return apiFailure($exception, 'Student information not found');
+        }
     }
 
     public function index()

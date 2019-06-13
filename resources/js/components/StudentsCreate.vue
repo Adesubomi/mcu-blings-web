@@ -89,8 +89,8 @@
 
                             <div class="col-md-6">
                                 <select id="genderField" class="form-control" v-model="form_data.gender">
-                                    <option value="f">Female</option>
-                                    <option value="m">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="male">Male</option>
                                 </select>
 
                                 <span class="invalid-feedback" role="alert">
@@ -109,12 +109,12 @@
                             <div class="col-md-6">
                                 <select id="college" class="form-control" v-model="form_data.college"
                                         :disabled="!has_colleges">
-                                    <option v-for="college of colleges" :value="college.short_name">
+                                    <option v-for="college of colleges" :value="college.name">
                                         {{college.short_name.toUpperCase()}} - {{ college.name }}
                                     </option>
                                 </select>
                                 <div class="pt-2 text-left d-inline-block" v-if="loading">
-                                    <inline-loader></inline-loader>
+                                    <inline-sm></inline-sm>
                                 </div>
 
                                 <span class="invalid-feedback" role="alert">
@@ -152,7 +152,7 @@
                                        v-model="form_data.matric_number"/>
 
                                 <div class="pt-2 text-left d-inline-block" v-if="loading">
-                                    <inline-loader></inline-loader>
+                                    <inline-sm></inline-sm>
                                 </div>
                                 <div class="text-muted" v-else>
                                     <small>Last Matric Number: <span v-text="lastMatricNumber"></span></small>
@@ -227,6 +227,7 @@
                         <div class="hand-display">
                             <i class="ion-android-hand"></i>
                         </div>
+                        <div class="text-center"><h3>Left Hand</h3></div>
                     </div>
                     <div class="col-md-6 border-left">
                         <div class="row justify-content-start">
@@ -273,6 +274,7 @@
                         <div class="hand-display flip-x">
                             <i class="ion-android-hand"></i>
                         </div>
+                        <div class="text-center"><h3>Right Hand</h3></div>
                     </div>
                 </div>
             </div>
@@ -286,6 +288,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="border-top pt-4 mt-4 text-right" v-if="stage < 2">
 
                 <button type="submit" class="btn btn-outline-primary btn-lg" v-if="stage>0" @click.prevent="stage--">
@@ -303,10 +306,9 @@
 
 <script>
     export default {
-        props: ['action'],
         data() {
             return {
-                stage: 0,
+                stage: 1,
                 loading: false,
                 posting: false,
                 colleges: [],
@@ -322,8 +324,8 @@
                     matric_number: '',
                     fingerprint: {
                         left_index: '',
-                        right_index: '',
                         left_thumb: '',
+                        right_index: '',
                         right_thumb: '',
                     },
                 },
@@ -464,7 +466,7 @@
             },
 
             resetForm: function () {
-                this.form_ = {
+                this.form_data = {
                     firstname: '',
                     lastname: '',
                     email: '',
@@ -475,8 +477,8 @@
                     matric_number: '',
                     fingerprint: {
                         left_index: '',
-                        right_index: '',
                         left_thumb: '',
+                        right_index: '',
                         right_thumb: '',
                     },
                 };

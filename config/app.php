@@ -230,10 +230,10 @@ return [
 
     // APP SPECIFIC CONFIGURATIONS
     'roles' => [
-        'ADMIN' => [
+        'admin' => [
             'key' => 'ADMIN'
         ],
-        'STUDENT' => [
+        'student' => [
             'key' => 'STUDENT'
         ],
     ],

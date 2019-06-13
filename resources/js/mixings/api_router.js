@@ -3,32 +3,45 @@ const path = require('path');
 Vue.mixin({
     data: function () {
         return {
-            base_url: 'http://mcpherson.test/api',
-            urls: [
-                {method: 'get', url: 'students', name: 'students', description: 'Get list of students'},
-                {method: 'post', url: 'students/store', name: 'students.store', description: 'Get list of students'},
-                {method: 'get', url: 'students/show/:student_id', name: 'students.show', description: 'Get a student'},
-                {method: 'get', url: 'pd/colleges-alt', name: 'pd.colleges-alt', description: 'Get list of colleges with their departments'},
+            api_base: 'http://mcpherson.test/api',
+            web_base: 'http://mcpherson.test',
+            api_urls: [
+                { method: 'get', url: 'students', name: 'students', description: 'Get list of students'},
+                { method: 'post', url: 'students/store', name: 'students.store', description: 'Get list of students'},
+                { method: 'get', url: 'students/show/:student_id', name: 'students.show', description: 'Get a student'},
+                { method: 'get', url: 'pd/colleges-alt', name: 'pd.colleges-alt', description: 'Get list of colleges with their departments'},
+            ],
+            web_urls: [
+                { method: 'get', url: 'students/:student_id', name: 'students.show', description: 'Show a student'},
             ]
         }
     },
 
     methods: {
 
-        api: function (name, params) {
+        web: function (name, params) {
 
-            let fUrl = this._getRouteByName(name);
+            let f_url = this._getRouteByName(name, this.web_urls);
 
-            fUrl = this._parseRouteParams(fUrl, params);
-            fUrl = this._getFullRoute(fUrl);
-            return fUrl;
+            f_url = this._parseRouteParams(f_url, params);
+            f_url = this._getFullRoute(f_url, this.web_base);
+            return f_url;
         },
 
-        _getRouteByName: function (name) {
+        api: function (name, params) {
+
+            let f_url = this._getRouteByName(name, this.api_urls);
+
+            f_url = this._parseRouteParams(f_url, params);
+            f_url = this._getFullRoute(f_url, this.api_base);
+            return f_url;
+        },
+
+        _getRouteByName: function (name, api_urls) {
 
             let fUrl = '';
 
-            let fUrls = this.urls.filter(el => el.name == name);
+            let fUrls = api_urls.filter(el => el.name == name);
 
             if (fUrls.length > 0) {
                 fUrl = fUrls[0];
@@ -42,21 +55,21 @@ Vue.mixin({
 
         _parseRouteParams: function (url, params) {
 
-            let fUrl = url;
+            let f_url = url;
 
-            if (params == undefined || params == null) return fUrl;
+            if (params == undefined || params == null) return f_url;
 
             let paramKeys = Object.keys(params);
 
             for (let paramKey of paramKeys) {
-                fUrl = fUrl.replace(':' + paramKey, params[paramKey]);
+                f_url = f_url.replace(':' + paramKey, params[paramKey]);
             }
 
-            return fUrl;
+            return f_url;
         },
 
-        _getFullRoute: function (url) {
-            return this.base_url +'/'+ url;
+        _getFullRoute: function (url, base) {
+            return base +'/'+ url;
         },
     }
 });

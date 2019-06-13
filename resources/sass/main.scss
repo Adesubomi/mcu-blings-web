@@ -71,6 +71,7 @@ body {
     color: #1b4b72;
     text-align: center;
     border: 1px solid #1b4b72;
+    transition: all 200ms ease-out;
 
     .module-menu-icon {
       display: inline-block;
@@ -80,6 +81,12 @@ body {
     .module-menu-name {
     }
 
+    &:hover {
+      text-decoration: none;
+      background-color: #1b4b72;
+      color: #f0f8ff;
+      transition: all 200ms ease-in-out;
+    }
   }
 }
 

@@ -16,8 +16,8 @@ class StudentController extends Controller
         return view('students_create');
     }
 
-    public function store()
+    public function show()
     {
-
+        return view('students_show');
     }
 }

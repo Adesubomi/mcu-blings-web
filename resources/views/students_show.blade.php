@@ -1,6 +1,7 @@
-@extends('layouts.form')
+@extends('layouts.app')
+
 @section('content')
-    <students-create></students-create>
+    <students-show :student-id="'{{ request()->route('student_id') }}'"></students-show>
 @endsection
 
 @section('scripts')

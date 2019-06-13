@@ -6,7 +6,7 @@
                     <h2 class="m-0 p-0">
                         Students
                     </h2>
-                    <h5 class="text-muted">Manage list of all students in school</h5>
+                    <h5 class="text-muted font-weight-lighter">Manage list of all students in school</h5>
                 </div>
                 <div class="col-auto">
                     <span class="text-muted">Filter by:</span>
@@ -49,12 +49,22 @@
                         <th>Matric No.</th>
                         <th>Name</th>
                         <th>Level</th>
+                        <th>Department</th>
                     </tr>
                     </thead>
                     <tr v-for="student of students">
-                        <td><span v-text="student.matric_number"></span></td>
-                        <td><span v-text="student.lastname +' '+ student.firstname"></span></td>
+                        <td>
+                            <a :href="web('students.show', {student_id: student.id})">
+                                <span v-text="student.matric_number"></span>
+                            </a>
+                        </td>
+                        <td>
+                            <a :href="web('students.show', {student_id: student.id})">
+                                <span v-text="student.lastname +' '+ student.firstname"></span>
+                            </a>
+                        </td>
                         <td><span v-text="student_level(student) + '00 Level'"></span></td>
+                        <td><span v-text="student.department"></span></td>
                     </tr>
                 </table>
             </div>

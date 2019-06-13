@@ -27,7 +27,10 @@ class StudentStoreRequest extends FormRequest
             'firstname' => 'required',
             'lastname' => 'required',
             'email' => 'required|email|unique:users,email',
+            'gender' => 'required',
             'matric_number' => 'required',
+            'college' => 'required',
+            'department' => 'required',
         ];
     }
 }

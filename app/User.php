@@ -19,9 +19,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'firstname', 'lastname', 'email', 'password',
-        'role', 'level', 'matric_number',
-    ];
+        'firstname', 'lastname', 'email', 'phone', 'password',
+        'role', 'gender', 'level', 'matric_number', 'college', 'department', ];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -41,6 +40,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function biometrics()
+    {
+        return $this->hasMany(Biometric::class);
+    }
+
     public function getFullnameAttribute()
     {
         return "{$this->firstname} {$this->lastname}";
@@ -55,9 +59,12 @@ class User extends Authenticatable
                 'firstname' => $request->input('firstname'),
                 'lastname' => $request->input('lastname'),
                 'email' => $request->input('email'),
-                'role' => $request->input('role'),
+                'role' => config('app.roles.student.key'),
+                'gender' => config('app.roles.student.key'),
                 'level' => $request->input('level') ?? 1,
                 'matric_number' => $request->input('matric_number'),
+                'college' => $request->input('college'),
+                'department' => $request->input('department'),
                 'password' => bcrypt( Str::random(6) ),
             ]);
 
@@ -92,11 +99,18 @@ class User extends Authenticatable
 
     public function scopeStudents($query)
     {
-        return $query->where('role', config('app.roles.STUDENT.Key'));
+        return $query->where('role', config('app.roles.student.key'));
     }
 
     public function getStudents()
     {
         return $this->students()->get();
+    }
+
+    public function getStudentInfo($studentId)
+    {
+        return $this->students()
+            ->where('id', $studentId)
+            ->first();
     }
 }

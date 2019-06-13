@@ -51,7 +51,7 @@
             <div class="col-auto">
                 <div class="stack-menu">
                     <div class="module-menu-items">
-                        <a href="#" class="module-menu">
+                        <a href="{{ route('students.index') }}" class="module-menu">
                             <div class="module-menu-icon">
                                 <i class="ion ion-ios-people"></i>
                             </div>
