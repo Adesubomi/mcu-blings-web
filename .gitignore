@@ -4,6 +4,7 @@
 /public/dist/*
 public/images
 /storage/*.key
+/resources/js/mixings/api-router.js
 /vendor
 .idea
 .env

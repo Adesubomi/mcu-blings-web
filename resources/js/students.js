@@ -1,4 +1,4 @@
-var apiRouter = require('./mixings/api_router');
+var apiRouter = require('./mixings/api-router');
 
 Vue.component('students-create', require('./components/StudentsCreate.vue').default);
 Vue.component('students-list', require('./components/StudentsList.vue').default);
