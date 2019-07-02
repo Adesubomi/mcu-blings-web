@@ -71,9 +71,7 @@ class GenerateJsApiFile extends Command
         $api_base = URL::full() .'/api';
         $web_base = URL::full();
 
-        $content = 'import Vue from \'vue\';
-
-Vue.mixin({
+        $content = 'Vue.mixin({
     data: function () {
         return {
             api_base: "'. $api_base .'",
@@ -97,6 +95,8 @@ Vue.mixin({
         $formatted_web_routes = '[
                 { method: "get", url: "students/:student_id", name: "students.show", description: "Show a student"},
             ]';
+
+        
         
         return $formatted_web_routes;
     }
