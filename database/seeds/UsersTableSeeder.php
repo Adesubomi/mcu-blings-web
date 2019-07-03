@@ -38,5 +38,7 @@ class UsersTableSeeder extends Seeder
                 'password' => $user['password'],
             ]);
         }
+
+        factory(\App\User::class, 200)->state('student')->create();
     }
 }

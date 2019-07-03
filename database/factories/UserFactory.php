@@ -18,6 +18,7 @@ use Faker\Generator as Faker;
 
 $factory->define(User::class, function (Faker $faker) {
     return [
+        'matric_number' => Str::random(8),
         'firstname' => $faker->firstName,
         'lastname' => $faker->lastName,
         'email' => $faker->unique()->safeEmail,
@@ -28,3 +29,7 @@ $factory->define(User::class, function (Faker $faker) {
         'remember_token' => Str::random(10),
     ];
 });
+
+$factory->state(User::class, 'student', [
+    'role' => config('app.roles.student.key'),
+]);

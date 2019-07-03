@@ -129,8 +129,8 @@
                             </label>
 
                             <div class="col-md-6">
-                                <select id="department" class="form-control" :disabled="!has_departments"
-                                        v-model="form_data.department">
+                                <select id="department" class="form-control" v-model="form_data.department"
+                                        :disabled="!has_departments">
                                     <option v-for="department of departments" :value="department.name">
                                         {{ department.name }}
                                     </option>
@@ -139,6 +139,24 @@
                                 <span class="invalid-feedback" role="alert">
                                 <strong></strong>
                             </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="session_field" class="col-md-4 col-form-label text-md-right">
+                                Session. <span class="text-danger">*</span>
+                            </label>
+
+                            <div class="col-md-6">
+                                <select id="session_field" class="form-control" v-model="form_data.session">
+                                    <option v-for="session of sessions" :value="session">
+                                        {{ session }}
+                                    </option>
+                                </select>
+
+                                <span class="invalid-feedback" role="alert">
+                                    <strong></strong>
+                                </span>
                             </div>
                         </div>
 
@@ -160,8 +178,8 @@
 
 
                                 <span class="invalid-feedback" role="alert">
-                            <strong></strong>
-                        </span>
+                                    <strong></strong>
+                                </span>
                             </div>
                         </div>
 
@@ -308,10 +326,23 @@
     export default {
         data() {
             return {
-                stage: 1,
+                stage: 0,
                 loading: false,
                 posting: false,
                 colleges: [],
+                departments: [],
+                sessions: [
+                    "2O10/2011",
+                    "2O11/2012",
+                    "2O12/2013",
+                    "2O13/2014",
+                    "2O14/2015",
+                    "2O15/2016",
+                    "2O16/2017",
+                    "2O17/2018",
+                    "2O18/2019",
+                    "2O19/2020",
+                ],
                 last_matric_number: '',
                 form_data: {
                     firstname: '',
@@ -334,6 +365,15 @@
         mounted() {
             this.getData();
         },
+        watch: {
+            'form_data.college': function (college_name) {
+                let colleges = this.colleges.filter( value => {
+                    return college_name == value.name;
+                });
+
+                this.departments = colleges[0].departments;
+            }
+        },
         computed: {
 
             has_colleges: function () {
@@ -342,20 +382,6 @@
 
             has_departments: function () {
                 return (this.departments != undefined && this.departments != null && this.departments.length > 0);
-            },
-
-            departments: function () {
-                let college = this.form_data.college;
-
-                let fDepartments = this.colleges.filter((el) => el.short_name == college);
-
-                if (fDepartments.length > 0) {
-                    let fDepartment = fDepartments[0];
-                    return fDepartment.departments;
-                }
-                else {
-                    return [];
-                }
             },
 
             lastMatricNumber: function () {

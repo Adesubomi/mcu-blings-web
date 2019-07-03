@@ -241,19 +241,27 @@ return [
     'colleges' => [
         ['short_name' => 'colhum', 'name' => 'College of humanities',
             'departments' => [
-                ['name' => 'Law'],
                 ['name' => 'Library Information'],
+                ['name' => 'Humanities'],
+                ['name' => 'International Relations'],
+                ['name' => 'History'],
+                ['name' => 'Religious Studies'],
             ]
         ],
         ['short_name' => 'colnas', 'name' => 'College of natural and applied sciences',
             'departments' => [
-                ['name' => 'Computer Science', 'short_name' => ''],
-                ['name' => 'Physics', 'short_name' => ''],
+                ['name' => 'Computer Sciences', 'short_name' => ''],
+                ['name' => 'Micro-biology', 'short_name' => ''],
+                ['name' => 'Bio-chemistry', 'short_name' => ''],
+                ['name' => 'Bio-technology', 'short_name' => ''],
             ]
         ],
-        ['short_name' => 'colmas', 'name' => 'College of social and management sciences',
+        ['short_name' => 'cosmas', 'name' => 'College of social and management sciences',
             'departments' => [
                 ['name' => 'Mass Communication'],
+                ['name' => 'Business Administration'],
+                ['name' => 'Accounting'],
+                ['name' => 'Economics'],
             ]
         ],
     ]
