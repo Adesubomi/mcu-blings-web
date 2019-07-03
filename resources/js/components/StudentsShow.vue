@@ -33,7 +33,7 @@
                         <span v-text="student.lastname"></span>&nbsp;<span v-text="student.firstname"></span>
                     </div>
                     <div class="ss-student-level">
-                        Level: <span v-text="student.level"></span>00 Level
+                        Level: <span v-text="student_level(student)"></span>
                     </div>
                 </div>
                 <div class="col">
@@ -116,9 +116,9 @@
             student_level: function (student) {
 
                 if (student.level == null || student.level == undefined) {
-                    return '1';
+                    return '1'+'00 Level';
                 }
-                return student.level;
+                return student.level +'00 Level';
             }
         }
     }

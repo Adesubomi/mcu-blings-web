@@ -39,6 +39,6 @@ class UsersTableSeeder extends Seeder
             ]);
         }
 
-        factory(\App\User::class, 200)->state('student')->create();
+        factory(\App\User::class, 40)->state('student')->create();
     }
 }

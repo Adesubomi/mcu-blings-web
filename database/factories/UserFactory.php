@@ -17,14 +17,23 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(User::class, function (Faker $faker) {
+
+    $colleges = config('app.colleges');
+    $college = $colleges[ rand(0, count($colleges)-1)];
+
+    $departments = $college['departments'];
+    $department = $departments[ rand(0, count($departments)-1)];
+
     return [
-        'matric_number' => Str::random(8),
+        'matric_number' => rand(11, 19) .'-'. rand(1000000, 9999999),
         'firstname' => $faker->firstName,
         'lastname' => $faker->lastName,
         'email' => $faker->unique()->safeEmail,
         'phone' => $faker->phoneNumber,
         'role' => config('app.roles.admin.key'),
         'email_verified_at' => now(),
+        'department' => $department['name'],
+        'college' => $college['name'],
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         'remember_token' => Str::random(10),
     ];
