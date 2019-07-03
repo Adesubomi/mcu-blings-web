@@ -20,7 +20,8 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'firstname', 'lastname', 'email', 'phone', 'password',
-        'role', 'gender', 'level', 'matric_number', 'college', 'department', ];
+        'role', 'gender', 'level', 'matric_number', 'college', 'department', 'session',
+        'picture'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -65,6 +66,8 @@ class User extends Authenticatable
                 'matric_number' => $request->input('matric_number'),
                 'college' => $request->input('college'),
                 'department' => $request->input('department'),
+                'session' => $request->input('session'),
+                'picture' => '',
                 'password' => bcrypt( Str::random(6) ),
             ]);
 

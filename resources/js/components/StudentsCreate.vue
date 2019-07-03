@@ -352,6 +352,7 @@
                     gender: '',
                     college: '',
                     department: '',
+                    session: '',
                     matric_number: '',
                     fingerprint: {
                         left_index: '',
